@@ -19,9 +19,9 @@ def GIT_REPO = "https://github.com/jagadeeshchirasani/jenkinsbeta.git"
 
 properties (
   [buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '2', numToKeepStr: '2')), 
-  [$class: 'OptionalJobProperty', autoRebuild: false, rebuildDisabled: false], 
+  [$class: 'JobProperty', autoRebuild: false, rebuildDisabled: false], 
   parameters (
-    [[$class: 'JobProperty', branch: '', branchFilter: '.*', defaultValue: "${GIT_BRANCH}", description: 'Select the Branch', name: 'Branch', quickFilterEnabled: false, selectedValue: 'NONE', sortMode: 'NONE', tagFilter: '*', type: 'PT_BRANCH', useRepository: "${GIT_REPO}"],
+    [[$class: 'GitParameterDefinition', branch: '', branchFilter: '.*', defaultValue: "${GIT_BRANCH}", description: 'Select the Branch', name: 'Branch', quickFilterEnabled: false, selectedValue: 'NONE', sortMode: 'NONE', tagFilter: '*', type: 'PT_BRANCH', useRepository: "${GIT_REPO}"],
 //    choice(choices: ['DEV', 'PROD'], description: 'Please select Environment to deploy code.', name: 'ENV'),
 	booleanParam(defaultValue: true, description: 'Clone GIT Repo. Default true', name: 'Checkout'), booleanParam(defaultValue: false, description: 'Build the Code', name: 'npm_build'), booleanParam(defaultValue: false, description: 'Deploy the artifact to DEV/PROD environment', name: 'Deploy')]
   ), 
