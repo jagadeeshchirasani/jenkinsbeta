@@ -18,7 +18,7 @@ def GIT_REPO = "https://github.com/jagadeeshchirasani/jenkinsbeta.git"
 
 properties (
   [buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '2', numToKeepStr: '2')), 
-  [$class: 'RebuildSettings', autoRebuild: false, rebuildDisabled: false], 
+  [$class: 'OptionalJobProperty', autoRebuild: false, rebuildDisabled: false], 
   parameters (
     [[$class: 'GitParameterDefinition', branch: '', branchFilter: '.*', defaultValue: "${GIT_BRANCH}", description: 'Select the Branch', name: 'Branch', quickFilterEnabled: false, selectedValue: 'NONE', sortMode: 'NONE', tagFilter: '*', type: 'PT_BRANCH', useRepository: "${GIT_REPO}"],
 //    choice(choices: ['DEV', 'PROD'], description: 'Please select Environment to deploy code.', name: 'ENV'),
